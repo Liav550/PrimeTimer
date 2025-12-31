@@ -7,11 +7,18 @@ interface StyledButtonProps {
   children?: React.ReactNode;
   sx?: SxProps<Theme>;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
-export const StyledButton: FC<StyledButtonProps> = ({ children, sx, type }) => {
+export const StyledButton: FC<StyledButtonProps> = ({
+  children,
+  sx,
+  type,
+  disabled,
+}) => {
   return (
     <Button
+      disabled={disabled}
       type={type}
       sx={{
         backgroundColor: type === "submit" ? colorPallete.bold : "inherit",
