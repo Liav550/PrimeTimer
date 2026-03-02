@@ -3,4 +3,6 @@ export const colorPallete = {
   secondary: "#fbce7aff",
   accent: "#e0bb78ff",
   bold: "#682e2eff",
+  seperatorColor: "#5d5925ff",
+  tableCellColor: "#fbff96ff",
 };

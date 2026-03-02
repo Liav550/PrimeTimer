@@ -6,10 +6,10 @@ import {
   Input,
   InputLabel,
 } from "@mui/material";
-import { StyledButton } from "./ui/Button";
+import { StyledButton } from "../components/ui/Button";
 import { colorPallete } from "../utils/constants";
 import { useForm } from "react-hook-form";
-import { Message } from "./ui/Message";
+import { Message } from "../components/ui/Message";
 import { usePostRequest } from "../hooks/usePostRequest";
 import { AxiosError } from "axios";
 import type { FC } from "react";

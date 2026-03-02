@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import { LoginPage } from "./components/LoginPage";
+import { LoginPage } from "../src/views/LoginPage";
 import { colorPallete } from "./utils/constants";
 import { useState } from "react";
-import { TimerPage } from "./components/TimerPage";
+import { TimerPage } from "../src/views/TimerPage";
 import Cookies from "js-cookie";
 
 export const App = () => {
@@ -16,7 +16,7 @@ export const App = () => {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: token ? "normal" : "center",
         backgroundColor: colorPallete.primary,
       }}
     >
