@@ -4,6 +4,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
   Timestamp,
 } from "typeorm";
@@ -15,11 +16,14 @@ export class Session {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
+  @Column({ type: "varchar", name: "user_id" })
+  userId!: string;
+
   @ManyToOne(() => User, (user) => user.sessions)
   @JoinColumn({ name: "user_id" })
   user!: User;
 
-  @Column({ unique: true, type: "varchar" })
+  @Column({ type: "varchar" })
   name!: string;
 
   @Column({ name: "created_at", type: "timestamp" })

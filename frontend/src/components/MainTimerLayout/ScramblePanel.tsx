@@ -8,8 +8,9 @@ export const ScramblePanel = () => {
   const { scramble, generateRandomScramble } = useScramble();
 
   useEffect(() => {
-    generateRandomScramble("333");
+    generateRandomScramble(event);
   }, []);
+
   return (
     <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
       <Box
@@ -21,14 +22,13 @@ export const ScramblePanel = () => {
         }}
       >
         <FormControl sx={{ width: "10rem" }}>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Event</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={event}
-            label="Age"
+            label="Event"
             onChange={(event) => {
-              console.log(event.target.value);
               setEvent(event.target.value);
               generateRandomScramble(event.target.value);
             }}

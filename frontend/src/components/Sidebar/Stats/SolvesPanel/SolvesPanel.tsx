@@ -6,7 +6,8 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { StyledTableCell } from "../../ui/TableCell";
+import { StyledTableCell } from "../../../ui/TableCell";
+import { SessionSelect } from "./Session/SessionSelect";
 
 interface Solve {
   id: number;
@@ -85,22 +86,40 @@ export const SolvesPanel = () => {
         textAlign: "center",
         padding: "0.5rem",
         overflowY: "auto",
-        height: "14rem",
+        maxHeight: "27rem",
         "::-webkit-scrollbar": {
           display: "none",
         },
       }}
     >
-      <Box>Solves: 311</Box>
-      <Box>Average: 9.25</Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <SessionSelect />
+        <Box sx={{ display: "flex", gap: "1rem" }}>
+          <Box>Solves: 311</Box>
+          <Box>Average: 9.25</Box>
+        </Box>
+      </Box>
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
               <StyledTableCell> </StyledTableCell>
-              <StyledTableCell>Time</StyledTableCell>
-              <StyledTableCell>ao5</StyledTableCell>
-              <StyledTableCell>ao12</StyledTableCell>
+              <StyledTableCell>
+                <b>Time</b>
+              </StyledTableCell>
+              <StyledTableCell>
+                <b>ao5</b>
+              </StyledTableCell>
+              <StyledTableCell>
+                <b>ao12</b>
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>

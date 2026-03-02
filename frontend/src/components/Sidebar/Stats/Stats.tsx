@@ -6,7 +6,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { SolvesPanel } from "./SolvesPanel";
+import { SolvesPanel } from "./SolvesPanel/SolvesPanel";
 import { StyledTableCell } from "../../ui/TableCell";
 import { Seperator } from "../../ui/Seperator";
 
