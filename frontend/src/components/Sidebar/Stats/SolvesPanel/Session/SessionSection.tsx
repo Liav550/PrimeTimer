@@ -1,19 +1,11 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Tooltip,
-} from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material";
 import { useGetRequest } from "../../../../../hooks/useGetRequest";
 import type { Session } from "../../../../../utils/types";
 import { useTimer } from "../../../../../contexts/timer/useTimer";
-import { CiCirclePlus } from "react-icons/ci";
 import { useEffect } from "react";
 import { DeleteSectionModal } from "./DeleteSectionModal";
+import { CreateSectionModal } from "./CreateSectionModal";
 
 export const SessionSection = () => {
   const { data: sessions, isLoading, refetch } = useGetRequest("/sessions/");
@@ -58,11 +50,7 @@ export const SessionSection = () => {
         </Select>
       </FormControl>
       <Box>
-        <Tooltip title="new session">
-          <Button>
-            <CiCirclePlus style={{ fontSize: "2.5rem", color: "black" }} />
-          </Button>
-        </Tooltip>
+        <CreateSectionModal refetch={refetch} />
       </Box>
       <Box>
         <DeleteSectionModal refetch={refetch} />
