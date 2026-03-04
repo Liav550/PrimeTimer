@@ -7,11 +7,11 @@ import {
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { RxTrackNext } from "react-icons/rx";
 import { InfoScreen } from "./InfoScreen";
-import { useScramble } from "../../../contexts/scramble/useScramble";
+import { useTimer } from "../../../contexts/timer/useTimer";
 import { useEvent } from "../../../contexts/event/useEvent";
 
 export const Operations = () => {
-  const { generateRandomScramble, scramble } = useScramble();
+  const { generateRandomScramble, scramble } = useTimer();
   const { event } = useEvent();
 
   const copyScramble = () => {

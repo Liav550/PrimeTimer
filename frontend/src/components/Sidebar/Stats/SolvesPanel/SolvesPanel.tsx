@@ -7,78 +7,14 @@ import {
   TableRow,
 } from "@mui/material";
 import { StyledTableCell } from "../../../ui/TableCell";
-import { SessionSelect } from "./Session/SessionSelect";
-
-interface Solve {
-  id: number;
-  currentTime: number;
-  ao5: number;
-  ao12: number;
-}
+import { SessionSection } from "./Session/SessionSection";
+import { useGetRequest } from "../../../../hooks/useGetRequest";
+import { useTimer } from "../../../../contexts/timer/useTimer";
+import type { Solve } from "../../../../utils/types";
 
 export const SolvesPanel = () => {
-  const solves: Solve[] = [
-    {
-      id: 10,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 9,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 8,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 7,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 6,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 5,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 4,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 3,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 2,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-    {
-      id: 1,
-      currentTime: 9.23,
-      ao5: 9.5,
-      ao12: 9.76,
-    },
-  ];
+  const { currentSession } = useTimer();
+  const { data: solves } = useGetRequest(`/solves/${currentSession}`);
 
   return (
     <Box
@@ -100,10 +36,9 @@ export const SolvesPanel = () => {
           gap: "0.5rem",
         }}
       >
-        <SessionSelect />
+        <SessionSection />
         <Box sx={{ display: "flex", gap: "1rem" }}>
-          <Box>Solves: 311</Box>
-          <Box>Average: 9.25</Box>
+          <Box>Solves: {solves ? solves.length : 0}</Box>
         </Box>
       </Box>
       <TableContainer>
@@ -123,14 +58,15 @@ export const SolvesPanel = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {solves.map((solve) => (
-              <TableRow key={solve.id}>
-                <StyledTableCell>{solve.id}</StyledTableCell>
-                <StyledTableCell>{solve.currentTime}</StyledTableCell>
-                <StyledTableCell>{solve.ao5}</StyledTableCell>
-                <StyledTableCell>{solve.ao12}</StyledTableCell>
-              </TableRow>
-            ))}
+            {solves &&
+              solves.map((solve: Solve, index: number) => (
+                <TableRow key={solve.id}>
+                  <StyledTableCell>{solves.length - index}</StyledTableCell>
+                  <StyledTableCell>{solve.finalTime}</StyledTableCell>
+                  <StyledTableCell>{solve?.ao5 || "-"}</StyledTableCell>
+                  <StyledTableCell>{solve?.ao12 || "-"}</StyledTableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { connectDB } from "./database/connection.js";
 import AuthRouter from "./routers/auth.router.js";
 import SessionsRouter from "./routers/sessions.router.js";
+import SolvesRouter from "./routers/solves.router.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -19,6 +20,7 @@ app.use(cors({ origin: "*" }));
 
 app.use("/auth", AuthRouter);
 app.use("/sessions", SessionsRouter);
+app.use("/solves", SolvesRouter);
 app.use(errorMiddleware);
 
 connectDB()

@@ -1,14 +1,15 @@
 import { useState, type ReactNode } from "react";
 import Scrambo from "scrambo";
-import { ScrambleContext } from "./scrambleContext";
+import { TimerContext } from "./timerContext";
 import type { EventType } from "../../utils/types";
 
-interface ScrambleProviderProps {
+interface TimerProviderProps {
   children: ReactNode;
 }
 
-export const ScrambleProvider = ({ children }: ScrambleProviderProps) => {
+export const TimerProvider = ({ children }: TimerProviderProps) => {
   const [scramble, setScramble] = useState<string>("");
+  const [currentSession, setCurrentSession] = useState<string>("");
 
   const generateRandomScramble = (event: EventType) => {
     if (event === "222") {
@@ -18,11 +19,14 @@ export const ScrambleProvider = ({ children }: ScrambleProviderProps) => {
     setScramble(new Scrambo().type(event).get()[0]);
   };
 
-  const value = { scramble, generateRandomScramble };
+  const value = {
+    scramble,
+    generateRandomScramble,
+    currentSession,
+    setCurrentSession,
+  };
 
   return (
-    <ScrambleContext.Provider value={value}>
-      {children}
-    </ScrambleContext.Provider>
+    <TimerContext.Provider value={value}>{children}</TimerContext.Provider>
   );
 };

@@ -1,11 +1,11 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEvent } from "../../contexts/event/useEvent";
-import { useScramble } from "../../contexts/scramble/useScramble";
+import { useTimer } from "../../contexts/timer/useTimer";
 import { useEffect } from "react";
 
 export const ScramblePanel = () => {
   const { event, setEvent } = useEvent();
-  const { scramble, generateRandomScramble } = useScramble();
+  const { scramble, generateRandomScramble } = useTimer();
 
   useEffect(() => {
     generateRandomScramble(event);

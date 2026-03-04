@@ -5,11 +5,13 @@ import jwt from "jsonwebtoken";
 
 const middleware = (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!req.cookies || !req.cookies.token) {
-      throw new AppError(StatusCodes.UNAUTHORIZED, "Token not found");
+    let token = req.headers.authorization;
+
+    if (!token || token.split(" ")[0] !== "Bearer") {
+      throw new AppError(StatusCodes.UNAUTHORIZED, "Invalid token");
     }
 
-    const token = req.cookies.token;
+    token = token.split(" ")[1]!;
     const isValid = jwt.verify(token, process.env.JWT_SECRET!);
 
     if (!isValid) {

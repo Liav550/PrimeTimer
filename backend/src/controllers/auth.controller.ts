@@ -5,7 +5,7 @@ import { StatusCodes } from "http-status-codes";
 const loginHandler = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { email, password } = req.body;
@@ -20,7 +20,7 @@ const loginHandler = async (
 const signUpHandler = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const { email, password, username } = req.body;

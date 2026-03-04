@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ScrambleContext } from "./scrambleContext";
+import { TimerContext } from "./timerContext";
 
-export const useScramble = () => {
-  const value = useContext(ScrambleContext);
+export const useTimer = () => {
+  const value = useContext(TimerContext);
 
   if (!value) {
     throw new Error("Context must be called within a provider");
