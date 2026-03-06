@@ -27,7 +27,7 @@ CREATE TABLE timer.sessions (
 CREATE TABLE timer.solves (
 	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 	session_id UUID NOT NULL,
-	event_name events_enum NOT NULL DEFAULT '3x3',
+	event_name events_enum NOT NULL DEFAULT '333',
 	final_time TEXT,
 	penalty penalties_enum DEFAULT NULL,
 	scramble TEXT NOT NULL,

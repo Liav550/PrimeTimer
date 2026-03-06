@@ -8,13 +8,11 @@ import {
 } from "@mui/material";
 import { StyledTableCell } from "../../../ui/TableCell";
 import { SessionSection } from "./Session/SessionSection";
-import { useGetRequest } from "../../../../hooks/useGetRequest";
-import { useTimer } from "../../../../contexts/timer/useTimer";
 import type { Solve } from "../../../../utils/types";
+import { useSolves } from "../../../../hooks/useSolves";
 
 export const SolvesPanel = () => {
-  const { currentSession } = useTimer();
-  const { data: solves } = useGetRequest(`/solves/${currentSession}`);
+  const { data: solves } = useSolves();
 
   return (
     <Box

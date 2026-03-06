@@ -13,9 +13,15 @@ export class Solve {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
+  @Column({ name: "session_id", type: "varchar" })
+  sessionId!: string;
+
   @ManyToOne(() => Session, (session) => session.solves)
   @JoinColumn({ name: "session_id" })
   session!: Session;
+
+  @Column({ name: "scramble", type: "text" })
+  scramble!: string;
 
   @Column({ name: "event_name", type: "text" })
   eventName!: EventName;
